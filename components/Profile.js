@@ -1,36 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
+  TextInput, // 1
   TouchableOpacity,
   View,
   Image,
 } from 'react-native';
 
-class Main extends React.Component {
+class Profile extends React.Component {
 
   static navigationOptions = {
     header: null,
   }
 
-  state = {
-    name: '',
-  };
-
-  onPress = () =>
-    this.props.navigation.navigate('Profile', { name: this.state.name });
-
-  onChangeText = name => this.setState({ name });
-
   render() {
     return (
       <View style={styles.container}>
-
         <Image style={styles.logo} source={require('../assets/HerdLogo.png')} />
-        <TouchableOpacity style={styles.buttonArea} onPress={this.onPress}>
-          <Text style={styles.buttonText}>Join the HERD.</Text>
-        </TouchableOpacity>
+        <Text style={styles.label} >Name</Text>
+        <TextInput style={styles.input} />
+        <Text style={styles.label} >Age</Text>
+        <TextInput style={styles.input} />
+        <Text style={styles.label} >Blood Type</Text>
+        <TextInput style={styles.input} />
       </View>
     );
   }
@@ -42,7 +35,21 @@ const styles = StyleSheet.create({
     flex            : 1,
     backgroundColor : '#3ccde2',
     alignItems      : 'center',
-    justifyContent  : 'center',
+  },
+  label: {
+    color:'white',
+    justifyContent: 'flex-start',
+  },
+  input: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    width: 200,
+    height: 50,
+    padding: 3,
+    color: 'white',
+    borderRadius: 5,
+    fontSize: 20,
+    marginBottom: 20,
   },
   buttonArea: {
     marginTop: 200,
@@ -60,7 +67,8 @@ const styles = StyleSheet.create({
   logo: {
     height :200,
     width  :200,
+    marginBottom: 50,
   }
 });
 
-export default Main;
+export default Profile;
